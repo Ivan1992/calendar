@@ -8,4 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
+
 platformBrowserDynamic().bootstrapModule(AppModule);
