@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "heroku-prebuild": "npm install -g http-server",
 	"heroku-postbuild": "ng build --prod",
-	"start": "http-server dist/",
+	"start": "http-server dist/"
   },
   "engines": {
     "node": "6.10.0",
