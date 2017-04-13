@@ -4,12 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "heroku-prebuild": "npm install -g http-server",
+	"heroku-postbuild": "ng build --prod",
+	"start": "http-server dist/",
   },
   "engines": {
     "node": "6.10.0",
@@ -17,8 +18,8 @@
   },
   "private": true,
   "dependencies": {
-	"@angular/cli": "1.0.0-rc.1",
     "@angular/animations": "^4.0.2",
+    "@angular/cli": "1.0.0-rc.1",
     "@angular/common": "^4.0.2",
     "@angular/compiler": "^4.0.2",
     "@angular/compiler-cli": "^4.0.2",
@@ -34,7 +35,6 @@
     "angular2-font-awesome": "^1.1.0",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
-    "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "rxjs": "^5.1.0",
     "typescript": "^2.2.2",
