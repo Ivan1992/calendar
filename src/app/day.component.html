@@ -55,6 +55,21 @@
 				<div [ngStyle]="{'font-family': o_font, 'font-size': o_size+'rem'}">гDи i©е хрcтE сн7е б9іи поми1луй нaсъ</div>
 			</div>
 		</div>
+
+		<div class="form-group">
+			<div class="form-control">
+				<label for="datefont">Даты в календаре</label><br />
+				<div [(ngModel)]="cal_font" id="datefont" ngbRadioGroup name="datefont">
+					<label class="btn btn-primary">
+						<input type="radio" value="Turaevo" (click)="changeCalText('Turaevo')">Церковнославянские 
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" value="sans-serif" (click)="changeCalText('sans-serif')">Арабские
+					</label>
+				</div>
+			</div>
+		</div>
+
 	</form>
   </div>
   <div class="modal-footer">
@@ -107,15 +122,15 @@
 	</div>
 	<div class="row col-lg-9 col-sm-12" style="padding-bottom: 50px;">
 		<div class="col"><button type="button" class="btn btn-outline-primary" style="cursor: pointer;" (click)="getBackDayText();//dp.navigateTo({year : newStyle.getFullYear(), month: newStyle.getMonth()+1})">
-		<fa [name]="'chevron-left'" aria-hidden="true"></fa>Вчера</button></div>
+		<fa [name]="'chevron-left'" aria-hidden="true"></fa>Назад</button></div>
 		
 		<div class="col text-right"><button type="button" class="btn btn-outline-primary" style="cursor: pointer;" (click)="getNextDayText();//dp.navigateTo({year : newStyle.getFullYear(), month: newStyle.getMonth()+1})">
-		Завтра<fa [name]="'chevron-right'" aria-hidden="true"></fa></button></div>
+		Вперед<fa [name]="'chevron-right'" aria-hidden="true"></fa></button></div>
 		
 		<div class="col text-center">
 			<!--<h5 style="font-family: 'Arial'">date: {{date | json}}</h5>
 			<h5 style="font-family: 'Arial'">dateP: {{datePicker | json}}</h5>-->
-			<div class="row"><p class="h1 col text-center">{{dayNumberText}} {{monthText}}</p></div>
+			<div class="row"><p class="h1 col text-center"><span [ngStyle]="{'font-family': cal_font}">{{dayNumberText}}</span> {{monthText}}</p></div>
 			<div class="row"><p class="h3 col text-center">{{weekDay}}</p></div>
 			<div class="row"><p class="col text-center" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size: 1rem;">
 				<ngb-datepicker #dp [dayTemplate]="customDay" [(ngModel)]="datePicker" (navigate)="date = $event.next" [markDisabled]="isDisabled" (click)="onDayChange()" (navigateTo)="{year: datePicker.year, month: datePicker.month}" [displayMonths]="3" (navigation)="select"></ngb-datepicker>
@@ -129,8 +144,8 @@
 				  [class.prazdnikH]="isPrazdnik(date,0)" 
 				  [class.prazdnikL]="isPrazdnik(date,1)" 
 				  [class.bg-primary]="selected" 
-				  [ngStyle]="{'font-family': o_font, 'font-size': '1.4rem'}">
-					{{ getDayNumberText(date.day-1) }}
+				  [ngStyle]="{'font-family': cal_font, 'font-size': '1.4rem'}">
+						{{ getDayNumberText(date.day-1) }}
 				  </span>
 				</template>
 				
@@ -140,7 +155,7 @@
 			</p></div>
 		</div>
 	</div>
-	<div class="row col-lg-9 col-sm-12">
+	<div class="row col-lg-9 col-sm-12" style="font-family:'Times New Roman'">
 		<!--<p class="h1 col">а7 мaрта </p> 
 		<p class="h1 col text-right">{{weekDay}}</p>-->
 	</div>

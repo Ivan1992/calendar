@@ -59,9 +59,6 @@ export class CustomDatepickerI18n extends NgbDatepickerI18n {
 export class DayComponent implements OnInit {
 	oldStyle = new Date();
 	newStyle = new Date();
-	/*day: number;
-	month: number;
-	year: number;*/
 	days: Cday[];
 	saints = "";
 	tropar = "";
@@ -70,11 +67,12 @@ export class DayComponent implements OnInit {
 	dayNumberText = "";
 	gospelday = new Gospelday();
 	private sub: any;
-	closeResult: string;
 	o_font = "Turaevo";
 	o_size = "1.6";
 	language = "сs";
 	datePicker : NgbDateStruct;
+	cal_font = "Turaevo";
+	rus_saints = "";
 		
 	constructor(private dayService: DayService,
 				private gospelService: GospelService,
@@ -122,9 +120,29 @@ export class DayComponent implements OnInit {
 		else if (d == 6) {return "суб0та";}
 	}
 	
-	getDayNumberText(today : number): string {
+	getDayNumberText(today : number, somevalue?): string {
+		if (this.cal_font === "sans-serif") {
+			return (today+1).toString();
+		}
 		let arr = ["№","в7","G","д7","е7","ѕ7","з7","и7","f7","‹","№i","в7i","Gi","д7i","е7i","ѕ7i","з7i","и7i","f7i","к7","к7а","к7в","к7г","к7д","к7е","к7ѕ","к7з","к7и","к7f","l7","l7а"];
 		return arr[today];
+	}
+
+	convertToRus(text : string) {
+		let mapping = {"С™":"Свят","с™":"свят","є3пкcп":"епископ","хrтA":"Христа","Прпdбн":"Преподобн","прпdбн":"преподобн","пrт":"пресвят","прbр":"прор","пррb":"прор", "nц7A":"отца","ржcт":"рожест","влdчц":"владычец",
+		"ґпcл":"апостол", "Ржcтв":"Рожеств", "пrнw":"присно","дв7ы":"Девы","мRjи":"Марии","бGо":"бого","nц7ъ":"отец","б9іz":"Божия","цRцы":"царицы","кн7з":"княз","цRS":"царя","бцdы":"Богородицы","сщ7":"свящ",
+		"Бlж":"Блаж","бlж":"блаж","чcт":"чест", "пртdч":"предотеч", "кrтл":"крестител","гDн":"Господн", "бlг":"благ", "цrт":"царст", "м™":"мате", "u3ч™":"учит", "м§":"муч", "млd":"младе", "воскrн":"воскресен",
+	"бGа":"Бога", "бGъ":"Бог", "бц7ы":"Богородицы", "кrт":"Крест", "цRк":"церк", "цRе":"царе",
+		"a":"а","e":"е","0":"о","H":"о","h":"ы","Ђ":"и","y":"у","ё":"е","j":"и","ј":"и","џ":"о","ќ":"у","ћ":"я","ѓ":"а","t~":"от","s":"я","ґ":"а","ї":"и","њ":"о","э":"е", "N":"О", "€":"з",
+		"ў":"у","Ў":"У","k":"я","љ":"я","n":"о","Ґ":"А","K":"Я","Ѓ":"А","Ћ":"Я","w":"о","і":"и","x":"кс", "t":"от","\\|":"я","±":"я","E":"е","J":"и","Y":"у","Ё":"е", "v":"в",
+		"A":"а","S":"я","z":"я","є":"е","u":"у","É":"з","f":"ф"};
+		text = text.replace(/(<([^>]+)>)/ig, "");
+		Object.keys(mapping).forEach(key => {text = text.replace(new RegExp(key,"g"), mapping[key])} );
+		text = text.replace(/\d+|\$|ӳ|Ӳ|#|Ӱ|_/g,'');
+		text = text.replace(/ъ\s/g,' ');
+		text = text.replace(/ъ\,/g,',');
+		text = text.replace(/ъ\./g,'.');
+		return text;
 	}
 	
 	getMonthText(today : Date): string {
@@ -149,6 +167,7 @@ export class DayComponent implements OnInit {
 			this.days = days;
 			let d = this.days.filter(e => e.day == this.oldStyle.getDate() && e.month == (this.oldStyle.getMonth()+1))[0];
 			this.saints = d["saints"];
+			this.rus_saints = this.convertToRus(this.saints);
 			this.tropar = d["tropar"];
 			this.weekDay = this.getWeekDayText(this.oldStyle);
 			this.monthText = this.getMonthText(this.oldStyle);
@@ -159,6 +178,7 @@ export class DayComponent implements OnInit {
 	setTexts() : void {
 		let d = this.days.filter(e => e.day == this.oldStyle.getDate() && e.month == (this.oldStyle.getMonth()+1))[0];
 		this.saints = d["saints"];
+		this.rus_saints = this.convertToRus(this.saints);
 		this.tropar = d["tropar"];
 		this.getGospel();
 		this.datePicker = {
@@ -201,14 +221,12 @@ export class DayComponent implements OnInit {
 				this.oldStyle = new Date(paramDate);
 			}
 			this.datePicker = {year : this.newStyle.getFullYear(), month : this.newStyle.getMonth()+1, day: this.newStyle.getDate()};
-			//this.datePicker.day = this.newStyle.getDate();
-			//this.date.month = this.newStyle.getMonth();
-			//this.date.year = this.newStyle.getFullYear();
 		});
 		this.getDays();
 		this.getGospel();
 		this.o_font = this.getCookie('o_font')? this.getCookie('o_font') : "Turaevo";
 		this.o_size = this.getCookie('o_size')? this.getCookie('o_size') : "1.4";
+		this.cal_font = this.getCookie('cal_csfont');
 	}
 	
 	getCookie(key: string){
@@ -218,12 +236,30 @@ export class DayComponent implements OnInit {
 	putCookie(key: string, value: string){
 		return this._cookieService.put(key, value);
 	}
+
+	changeCalText(value) : void {
+		this.cal_font = value;
+		this.putCookie('cal_csfont', value);
+		this.dayNumberText = this.getDayNumberText(this.oldStyle.getDate()-1);
+	}
+
+	/* changeCalFont(value : boolean) : void {
+		this.putCookie('cal_csfont', );
+		if (value) {
+			this.calendar_font.font = this.o_font;
+			this.putCookie('cal_csfont', this.cal_font);
+		} else {
+			this.calendar_font.font = "sans-serif";
+			this.putCookie('cal_csfont', "false");
+		}
+		this.dayNumberText = this.getDayNumberText(this.oldStyle.getDate()-1);
+	} */
 	
 	open(content) {
 		this.modalService.open(content, { size: 'lg' }).result.then((result) => {
-		  this.closeResult = `Closed with: ${result}`;
+		  //this.closeResult = `Closed with: ${result}`;
 		}, (reason) => {
-		  this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		  //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
 	}
 	

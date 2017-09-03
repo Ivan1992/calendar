@@ -6,6 +6,10 @@ export class DayService {
 	getDays(): Promise<Cday[]> {
 		return Promise.resolve(CCALENDAR);
 	}
+
+	getDaysArray()  {
+		return CCALENDAR;
+	}
 }
 
 const CCALENDAR: Cday[] =
@@ -1833,7 +1837,7 @@ const CCALENDAR: Cday[] =
 	"month": 9,
 	"day": 17,
 	"saints": "<div style='color:red;'>С™hхъ мyченицъ дёвъ вёры, надeжды, любвE, и3 м™ри и4хъ софjи. Kвлeніе и3к0ны пrтhz бцdы флорeнскіz, въ лёто, ¤ѕ¦. И# цRегрaдскіz. </div><br /><div style='color:red;'>С™hхъ м§еницъ ґгафоклjи и3 феодHтіи. С™hхъ мyченикъ рн7ѕ и3зъ кот0рыхъ бhли є3ги1петскіе є3пкcпы пелeй, ни1лъ, зин0нъ; пресви1теры патермyфій, їліS, во грaде ти1ре пострадaвшихъ за хrтA в лёто, т‹.</div>",
-	"tropar": "<div class='text-div-tropari'><span style='color:red;'>Кондaкъ. глaсъ, №. Ѓ;-span:гницы словeсніи, ѓгницу и3 пaстырю бесёдовати спод0бистесz. џгневи лю1тому и3 мyкамъ прeдани бhсте, и3 kви1стесz ѓгGлwмъ равночeстни. тёмъ вси2, сщ7eнную вaшу пaмzть прaзднуемъ, в8 весeліи с®ца дв7ы бGомyдрыz.</div>",
+	"tropar": "<div class='text-div-tropari'><span style='color:red;'>Кондaкъ. глaсъ, №. Ѓ</span>гницы словeсніи, ѓгницу и3 пaстырю бесёдовати спод0бистесz. џгневи лю1тому и3 мyкамъ прeдани бhсте, и3 kви1стесz ѓгGлwмъ равночeстни. тёмъ вси2, сщ7eнную вaшу пaмzть прaзднуемъ, в8 весeліи с®ца дв7ы бGомyдрыz.</div>",
 	"otpust": ""
 },
 {

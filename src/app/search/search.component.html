@@ -1,0 +1,41 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Алавастр</a>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      <a class="nav-link" href="https://vk.com/public78092348" target="_blank">Сад Духовный</a>
+      </li>
+      <li class="nav-item">
+      <button type="button" style="cursor: pointer;" class="btn-link link nav-link" href="#" (click)="open(settings)">Настройки</button>
+      </li>
+      <li class="nav-item">
+      <button type="button" style="cursor: pointer;" class="btn-link link nav-link" href="#" (click)="open(about)">Помощь</button>
+      </li>
+    </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row justify-content-center" style="padding-top: 50px;">
+      <div class="row col-md-9 col-sm-12">
+        <h1>Поиск</h1>
+      </div>
+        <div class="row col-md-9 col-sm-12 justify-content-center">
+            <input id="typeahead-basic" style="font-size: 150%;" type="text" class="form-control" placeholder="Введите имя святого или название праздника..." [(ngModel)]="searchQuery" />
+            <!-- <input id="typeahead-basic" style="font-size: 150%;" type="text" class="form-control" placeholder="Введите имя святого или название праздника..." [ngModel]="myQuery" (ngModelChange)="search($event)" /> -->
+        </div>
+        <div class="row col-md-9 col-sm-12">
+            <!-- <div *ngFor="let item of items" class="card withPadding"> -->
+            <div *ngFor="let item of (days | ngFuse:searchQuery:{keys: ['saints'], threshold: 0.2, distance: 2000}) | limitResults" class="card withPadding">
+                <div class="card-block">
+                  <h5>{{item.day}}.{{item.month}}</h5>
+                  <div [ngStyle]="{'font-family': o_font, 'font-size': o_size+'rem'}">{{item.saints}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
