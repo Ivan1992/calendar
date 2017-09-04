@@ -93,12 +93,12 @@
 </ng-template>
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
-  </button>
+  </button>-->
   <a class="navbar-brand" href="#">Алавастр</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-collapse" id="navbarSupportedContent">
 	<ul class="navbar-nav mr-auto">
 	  <li class="nav-item">
 			<a class="nav-link" href="https://vk.com/public78092348" target="_blank">Сад Духовный</a>
@@ -117,11 +117,11 @@
 
 <div class="container withimage" style="padding-bottom: 50px;">
 <div class="row justify-content-center" [ngStyle]="{'font-family': o_font, 'font-size': o_size+'rem'}">
-	<div class="row col-lg-9 col-sm-12 justify-content-center">
+	<!--<div class="row col-lg-9 col-sm-12 justify-content-center">
 		<div class="col">
 			<p class="text-center"><img src="assets/img/header.png" /></p>
 		</div>
-	</div>
+	</div>-->
 	<div class="row col-lg-9 col-sm-12" style="padding-bottom: 50px;">
 		<div class="col"><button type="button" class="btn btn-outline-primary" style="cursor: pointer;" (click)="getBackDayText();//dp.navigateTo({year : newStyle.getFullYear(), month: newStyle.getMonth()+1})">
 		<fa [name]="'chevron-left'" aria-hidden="true"></fa>Назад</button></div>
@@ -129,7 +129,7 @@
 		<div class="col text-right"><button type="button" class="btn btn-outline-primary" style="cursor: pointer;" (click)="getNextDayText();//dp.navigateTo({year : newStyle.getFullYear(), month: newStyle.getMonth()+1})">
 		Вперед<fa [name]="'chevron-right'" aria-hidden="true"></fa></button></div>
 		
-		<div class="col text-center">
+		<div class="col col-lg-12 col-sm-12">
 			<!--<h5 style="font-family: 'Arial'">date: {{date | json}}</h5>
 			<h5 style="font-family: 'Arial'">dateP: {{datePicker | json}}</h5>-->
 			<div class="row"><p class="h1 col text-center"><span [ngStyle]="{'font-family': cal_font}">{{dayNumberText}}</span> {{monthText}}</p></div>
