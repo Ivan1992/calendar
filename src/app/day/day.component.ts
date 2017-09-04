@@ -74,7 +74,9 @@ export class DayComponent implements OnInit {
 	datePicker : NgbDateStruct;
 	cal_font = "Turaevo";
 	rus_saints = "";
-		
+	date;
+	select;
+
 	constructor(private dayService: DayService,
 				private gospelService: GospelService,
 				private route: ActivatedRoute,
