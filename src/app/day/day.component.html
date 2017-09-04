@@ -135,7 +135,7 @@
 			<div class="row"><p class="h1 col text-center"><span [ngStyle]="{'font-family': cal_font}">{{dayNumberText}}</span> {{monthText}}</p></div>
 			<div class="row"><p class="h3 col text-center">{{weekDay}}</p></div>
 			<div class="row"><p class="col text-center" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size: 1rem;">
-				<ngb-datepicker #dp [dayTemplate]="customDay" [(ngModel)]="datePicker" (navigate)="date = $event.next" [markDisabled]="isDisabled" (click)="onDayChange()" (navigateTo)="{year: datePicker.year, month: datePicker.month}" [displayMonths]="3" (navigation)="select"></ngb-datepicker>
+				<ngb-datepicker #dp [dayTemplate]="customDay" [(ngModel)]="datePicker" (navigate)="date = $event.next" [markDisabled]="isDisabled" (click)="onDayChange()" (navigateTo)="{year: datePicker.year, month: datePicker.month}" [displayMonths]="1" (navigation)="select"></ngb-datepicker>
 				
 				<ng-template #customDay let-date="date" let-disabled="disabled" let-currentMonth="currentMonth" let-selected="selected">
 				  <span class="custom-day" 
