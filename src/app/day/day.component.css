@@ -1,0 +1,123 @@
+/*.ngb-dp-day {
+	width: 100% !important;
+	height: 100% !important;
+	visibility: hidden !important;
+}*/
+
+.ngb-dp-day[_ngcontent-wjs-8], .ngb-dp-weekday[_ngcontent-wjs-8], .ngb-dp-week-number[_ngcontent-wjs-8] {
+	visibility: hidden !important;
+	display: none !important;
+}
+
+.custom-day {      
+	text-align: center;
+	/*padding: 0.185rem 0.25rem;*/
+	border-radius: 0rem;
+	display: inline-block;
+	width: 100%;/*2rem;*/
+	height: 100%;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.custom-day:hover {
+	background-color: #e6e6e6;
+	color: black;
+}
+
+.weekend {
+	/*background-color: #f0ad4e;*/
+	/*border-radius: 1rem;*/
+	/*color: white;*/
+}
+
+.fastDay {
+	background-color: rgb(220,220,220);
+	/*color: white;*/
+}
+
+.prazdnikH {
+	background-color: rgb(255, 0, 0);
+	color: white;
+}
+.prazdnikH:hover {
+	background-color: rgb(255, 100, 100);
+	color: white;
+}
+
+.prazdnikL {
+	border: 2px solid red;
+}
+
+@font-face {
+    font-family: Turaevo;
+    src: url('../fonts/Turaevo.ttf');
+}
+@font-face {
+    font-family: Starousp;
+    src: url('../fonts/StusUcs.ttf');
+}
+@font-face {
+    font-family: Ostr;
+    src: url('../fonts/HilandarUcs.ttf');
+}
+@font-face {
+    font-family: Triod;
+    src: url('../fonts/TriUcs.ttf');
+}
+@font-face {
+    font-family: Pochaevsk;
+    src: url('../fonts/PochUcs.ttf');
+}
+@font-face {
+    font-family: Grebnev;
+    src: url('../fonts/GrebnevUCS.ttf');
+}
+
+.withimage {
+	/*background-image: url('../assets/img/logo.gif');*/
+    background-color: rgba(255,255,255,0.95);
+    background-blend-mode: lighten;
+	background-repeat: no-repeat;
+	background-position: center 30%; 
+	background-attachment: fixed;
+}
+
+.o_small {
+	font-size: 1.2em;
+}
+.o_default {
+	font-size: 1.6em;
+}
+.o_big {
+	font-size: 1.8em;
+}
+
+.turaevo {
+	font-family: Turaevo;
+}
+.starousp {
+	font-family: Starousp;
+}
+.ostr {
+	font-family: Ostr;
+}
+.triod {
+	font-family: Triod;
+}
+.pochaevsk {
+	font-family: Pochaevsk;
+}
+.grebnev {
+	font-family: Grebnev;
+}
+
+.title_subtitle {
+	top: 310px;
+}
+
+.text-red {
+	color: red;
+}

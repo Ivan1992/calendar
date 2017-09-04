@@ -21,7 +21,12 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.3",
+    "angular2-cookie": "^1.2.6",
+    "angular2-fontawesome": "^0.9.3",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
+    "ng2-fuse": "^0.1.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
