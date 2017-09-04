@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
 import { AppComponent } from './app.component';
 import { DayComponent } from './day/day.component';
@@ -41,7 +41,7 @@ import { LimitResultsPipe } from './limit-results.pipe';
       {path: '**', component: DayComponent}
     ])
   ],
-  providers: [DayService, GospelService, CookieService, DateService],
+  providers: [DayService, GospelService, CookieService, { provide: CookieOptions, useValue: {} }, DateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
